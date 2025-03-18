@@ -43,6 +43,16 @@ function App() {
       <TodoInput onAdd={handleAdd} />
       <FilterBar filter={filter} onChange={setFilter} />
       <TodoList todos={filteredTodos} onDelete={handleDelete} onToggle={handleToggle} />
+      {todos.some(todo => todo.completed) && (
+        <button
+          onClick={() =>
+            setTodos(prev => prev.filter(todo => !todo.completed))
+          }
+          style={{marginTop: '1rem'}}
+        >
+          Clear Completed
+        </button>
+      )}
     </div>
   );
 }
